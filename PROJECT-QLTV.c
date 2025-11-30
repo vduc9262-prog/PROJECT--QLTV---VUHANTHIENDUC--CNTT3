@@ -1045,7 +1045,11 @@ char input[50];
             i++;
         }
 
-        if (!valid || choice < 1 || choice > 9) {
+       if (choice >= 10) {
+            printf("\nkhong co chuc nang !\n");
+        }
+
+        if (!valid ) {
             printf("\nLOI! khong de trong va phai nhap so  .\n");
             getchar();
             continue;
@@ -1101,3 +1105,4 @@ char input[50];
     } while (1);
 
 }
+
