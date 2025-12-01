@@ -139,7 +139,7 @@ Borrow borrows[MAX_BORROW] = {
 Book books[MAX];
 Borrow borrows[MAX_BORROW];
 
-int bookCount = 35;
+int bookCount = 36;
 int bookIdCounter = 1;
 int borrowCount = 30;
 int borrowIdCounter = 31;
@@ -844,14 +844,24 @@ void returnBook() {
         return;
     }
 
+    char line[100];
     int id, i, found = 0;
 
     while (1) {
         printf("Nhap ID phieu muon can tra: ");
-        fflush(stdin);
-        if (scanf("%d", &id) == 1) break;
-        printf("Loi: Khong duoc de trong hoac phai nhap so! Nhap lai.\n");
-        fflush(stdin);
+        fgets(line, sizeof(line), stdin);
+        if (line[0] == '\n' || line[0] == '\0') {
+            printf("Loi: Khong duoc de trong! Nhap lai.\n");
+            continue;
+        }
+        id = 0;
+        int k = 0;
+        while (line[k] >= '0' && line[k] <= '9') {
+            id = id * 10 + (line[k] - '0');
+            k++;
+        }
+        if (k > 0 && (line[k] == '\n' || line[k] == '\0')) break;
+        printf("Loi: Phai nhap so! Nhap lai.\n");
     }
 
     for (i = 0; i < borrowCount; i++) {
@@ -860,8 +870,7 @@ void returnBook() {
                 printf("Phieu %d da duoc tra truoc do!\n", id);
                 return;
             }
-            found = 1;
-            break;
+            found = 1; break;
         }
     }
     if (!found) {
@@ -872,30 +881,50 @@ void returnBook() {
     int d, m, y;
     while (1) {
         printf("Nhap ngay tra (dd mm yyyy): ");
-        fflush(stdin);
-
-        if (scanf("%d %d %d", &d, &m, &y) == 3) {
-            if (d >= 1 && d <= 31 && m >= 1 && m <= 12 && y >= 2000) {
-                if (y > borrows[i].borrowDate.year ||
-                    (y == borrows[i].borrowDate.year && m > borrows[i].borrowDate.month) ||
-                    (y == borrows[i].borrowDate.year && m == borrows[i].borrowDate.month && d > borrows[i].borrowDate.day)) {
-                    borrows[i].borrowReturn.day = d;
-                    borrows[i].borrowReturn.month = m;
-                    borrows[i].borrowReturn.year = y;
-                    break;
-                } else {
-                    printf("Loi: Ngay tra phai sau ngay muon!\n");
-                }
-            } else {
-                printf("Loi: Ngay thang nam khong hop le!\n");
-            }
-        } else {
-            printf("Loi: Khong duoc de trong hoac nhap sai dinh dang!\n");
-            while (getchar() != '\n' && getchar() != EOF);
+        fgets(line, sizeof(line), stdin);
+        if (line[0] == '\n') {
+            printf("Loi: Khong duoc de trong! Nhap lai.\n");
+            continue;
         }
+
+        // T? parse 3 s? t? line (r?t ng?n)
+        int nums[3] = {0,0,0}, idx = 0, num = 0;
+        int p = 0, valid = 1;
+        while (line[p] && idx < 3) {
+            if (line[p] >= '0' && line[p] <= '9') {
+                num = num * 10 + (line[p] - '0');
+            } else if (num > 0) {
+                nums[idx++] = num; num = 0;
+            }
+            p++;
+        }
+        if (num > 0) nums[idx++] = num;
+
+        if (idx != 3 || (line[p-1] != '\n' && line[p-1] != '\0')) valid = 0;
+        if (!valid) {
+            printf("Loi: Nhap sai dinh dang! Nhap lai.\n");
+            continue;
+        }
+
+        d = nums[0]; m = nums[1]; y = nums[2];
+
+        if (d < 1 || d > 31 || m < 1 || m > 12 || y < 2000) {
+            printf("Loi: Ngay thang nam khong hop le!\n");
+            continue;
+        }
+        if (y > borrows[i].borrowDate.year ||
+            (y == borrows[i].borrowDate.year && m > borrows[i].borrowDate.month) ||
+            (y == borrows[i].borrowDate.year && m == borrows[i].borrowDate.month && d > borrows[i].borrowDate.day))
+            break;
+
+        printf("Loi: Ngay tra phai sau ngay muon!\n");
     }
 
+    borrows[i].borrowReturn.day = d;
+    borrows[i].borrowReturn.month = m;
+    borrows[i].borrowReturn.year = y;
     borrows[i].status = 0;
+
     for (int j = 0; j < bookCount; j++) {
         if (books[j].bookId == borrows[i].bookId) {
             books[j].quantity++;
@@ -905,11 +934,11 @@ void returnBook() {
 
     printf("\n");
     printf("===============================\n");
-    printf("     TRA SACH THANH CONG!     \n");
+    printf(" TRA SACH THANH CONG! \n");
     printf("===============================\n");
     printf("ID phieu muon : %d\n", borrows[i].borrowId);
-    printf("Ma sach       : %d\n", borrows[i].bookId);
-    printf("Ngay tra      : %02d/%02d/%d\n", d, m, y);
+    printf("Ma sach : %d\n", borrows[i].bookId);
+    printf("Ngay tra : %02d/%02d/%d\n", d, m, y);
     printf("So luong sach da tang +1\n");
     printf("===============================\n");
 }
@@ -1142,5 +1171,4 @@ char input[50];
         fflush(stdin);
         getchar();
     } while (1);
-
 }
