@@ -18,6 +18,44 @@ typedef struct {
     int publishYear;
     int quantity;
 } Book;
+Book books[MAX] = {
+    {1,  "Toi thay toi tren duong",                  "Nguyen Nhat Anh",        2018, 10},
+    {2,  "Dac nhan tam",                             "Dale Carnegie",          1936, 15},
+    {3,  "Nha gia kim",                              "Paulo Coelho",           1988, 8},
+    {4,  "One Hundred Years of Solitude",            "Gabriel Garcia Marquez", 1967, 5},
+    {5,  "Cho toi xin mot ve di tuoi tho",           "Nguyen Nhat Anh",        2012, 12},
+    {6,  "The Hobbit",                               "J.R.R. Tolkien",         1937, 9},
+    {7,  "Tuoi tre dang gia bao nhieu",              "Rosie Nguyen",           2017, 20},
+    {8,  "Cafe cung Tony",                           "Tony Buoi Sang",         2015, 18},
+    {9,  "Muon kiep nhan sinh",                      "Nguyen Anh Tuan",        2020, 25},
+    {10, "Con duong Hoi giao",                       "Nguyen Xuan Vinh",       2019, 7},
+    {11, "Mat biec",                                 "Nguyen Nhat Anh",        1990, 15},
+    {12, "Doraemon",                                 "Fujiko F. Fujio",        1974, 30},
+    {13, "Harry Potter va Hoi phuong hoang",         "J.K. Rowling",           2003, 10},
+    {14, "Hacker's Delight",                         "Henry S. Warren",        2002, 6},
+    {15, "Clean Code",                               "Robert C. Martin",       2008, 14},
+    {16, "Tuoi tre hoai phi",                        "Rosie Nguyen",           2019, 22},
+    {17, "Nguoi trong mot",                          "Do Nhat Nam",            2016, 11},
+    {18, "Operating System Concepts",                "Silberschatz",           2018, 8},
+    {19, "Toi tu hoc",                               "Nguyen Duy Can",         2010, 20},
+    {20, "Con meo day bien troi va khoa hoc",        "Stephane Garnier",       2019, 9},
+    {21, "Nghin le mot dem",                         "Nguyen Tuan",            1940, 7},
+    {22, "Computer Networks",                        "Andrew Tanenbaum",       2010, 12},
+    {23, "Bo gia",                                   "Nguyen Nhat Anh",        2021, 18},
+    {24, "Yeu nhung dieu khong hoan hao",            "Haemin Sunim",           2018, 25},
+    {25, "Dung chay theo so dong",                   "Damien Webb",            2020, 10},
+    {26, "Nghin canh chim bo ca",                    "Harper Lee",             1960, 6},
+    {27, "Tam quoc dien nghia",                      "La Quan Trung",          1522, 15},
+    {28, "Song nhu ngay mai se chet",                "Robin Sharma",           2018, 13},
+    {29, "Atomic Habits",                            "James Clear",            2018, 30},
+    {30, "Dung bao gio di an mot minh",              "Keith Ferrazzi",         2005, 11},
+    {31, "The Power of Habit",                       "Charles Duhigg",         2012, 14},
+    {32, "Sapphire Blue",                            "Kerstin Gier",           2012, 8},
+    {33, "Thay do",                                  "Nguyen Nhat Anh",        2018, 17},
+    {34, "Tuoi tho du doi",                          "Nguyen Nhat Anh",        2010, 20},
+    {35, "The Little Prince",                        "Antoine de Saint-Exupery", 1943, 25},
+    {36, "Introduction to Algorithms (CLRS)",       "Thomas H. Cormen",       2022, 10}
+};
 
  Book listBook[MAX]={{1,"To Kill a Mockingbird","Harper Lee",1960,3},
                   {2,"Pride and Prejudice","Jane Austen",1913,5},
@@ -65,36 +103,37 @@ typedef struct {
     int status;
 } Borrow;
 Borrow borrows[MAX_BORROW] = {
-    {1,  1, {15,10,2024}, {15,11,2025}, "VU HAN THIEN DUC", 1},
-    {2,  2, {16,10,2024}, {16,12,2025}, "VU HAN THIEN DUC", 0},
-    {3,  4, {17,10,2024}, {17,11,2025}, "VU HAN THIEN DUC", 0},
-    {4,  1, {18,10,2024}, {18,12,2025}, "VU HAN THIEN DUC", 0},
-    {5,  6, {19,10,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {6, 22, {20,10,2024}, {20,11,2025}, "VU HAN THIEN DUC", 0},
-    {7, 18, {21,10,2024}, {21,12,2025}, "VU HAN THIEN DUC", 0},
-    {8, 14, {22,10,2024}, {22,11,2025}, "VU HAN THIEN DUC", 0},
-    {9, 36, {23,10,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {10, 6, {24,10,2024}, {24,12,2025}, "VU HAN THIEN DUC", 0},
-    {11,22, {25,10,2024}, {25,11,2025}, "VU HAN THIEN DUC", 0},
-    {12,18, {26,10,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {13,14, {27,10,2024}, {27,12,2025}, "VU HAN THIEN DUC", 0},
-    {14,36, {28,10,2024}, {28,11,2025}, "VU HAN THIEN DUC", 0},
-    {15,14, {29,10,2024}, {29,12,2025}, "VU HAN THIEN DUC", 0},
-    {16, 1, {30,10,2024}, {30,11,2025}, "VU HAN THIEN DUC", 0},
-    {17, 2, {01,11,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {18, 4, {02,11,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {19, 1, {03,11,2024}, {03,01,2026}, "VU HAN THIEN DUC", 0},
-    {20, 6, {04,11,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {21,22, {05,11,2024}, {05,12,2025}, "VU HAN THIEN DUC", 0},
-    {22,18, {06,11,2024}, {06,01,2026}, "VU HAN THIEN DUC", 0},
-    {23,14, {07,11,2024}, {07,12,2025}, "VU HAN THIEN DUC", 0},
-    {24,36, {9,11,2024}, {8,01,2026}, "VU HAN THIEN DUC", 0},
-    {25, 6, {9,11,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {26,22, {10,11,2024}, {10,12,2025}, "VU HAN THIEN DUC", 0},
-    {27,18, {11,11,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {28,14, {12,11,2024}, {12,01,2026}, "VU HAN THIEN DUC", 0},
-    {29,36, {13,11,2024}, {0,0,0},      "VU HAN THIEN DUC", 1},
-    {30,14, {14,11,2024}, {14,02,2026}, "VU HAN THIEN DUC", 0}
+    {1,1,{15,10,2024},{15,11,2025},"VU HAN THIEN DUC",1},
+    {2,2,{16,10,2024},{16,12,2025},"VU HAN THIEN DUC",0},
+    {3,4,{17,10,2024},{17,11,2025},"VU HAN THIEN DUC",0},
+    {4,1,{18,10,2024},{18,12,2025},"VU HAN THIEN DUC",0},
+    {5,6,{19,10,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {6,22,{20,10,2024},{20,11,2025},"VU HAN THIEN DUC",0},
+    {7,18,{21,10,2024},{21,12,2025},"VU HAN THIEN DUC",0},
+    {8,14,{22,10,2024},{22,11,2025},"VU HAN THIEN DUC",0},
+    {9,36,{23,10,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {10,6,{24,10,2024},{24,12,2025},"VU HAN THIEN DUC",0},
+    {11,22,{25,10,2024},{25,11,2025},"VU HAN THIEN DUC",0},
+    {12,18,{26,10,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {13,14,{27,10,2024},{27,12,2025},"VU HAN THIEN DUC",0},
+    {14,36,{28,10,2024},{28,11,2025},"VU HAN THIEN DUC",0},
+    {15,14,{29,10,2024},{29,12,2025},"VU HAN THIEN DUC",0},
+    {16,1,{30,10,2024},{30,11,2025},"VU HAN THIEN DUC",0},
+    {17,2,{1,11,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {18,4,{2,11,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {19,1,{3,11,2024},{3,1,2026},"VU HAN THIEN DUC",0},
+    {20,6,{4,11,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {21,22,{5,11,2024},{5,12,2025},"VU HAN THIEN DUC",0},
+    {22,18,{6,11,2024},{6,1,2026},"VU HAN THIEN DUC",0},
+    {23,14,{7,11,2024},{7,12,2025},"VU HAN THIEN DUC",0},
+    {24,36,{9,11,2024},{8,1,2026},"VU HAN THIEN DUC",0},
+    {25,6,{9,11,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {26,22,{10,11,2024},{10,12,2025},"VU HAN THIEN DUC",0},
+    {27,18,{11,11,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {28,14,{12,11,2024},{12,1,2026},"VU HAN THIEN DUC",0},
+    {29,36,{13,11,2024},{0,0,0},"VU HAN THIEN DUC",1},
+    {30,14,{14,11,2024},{14,2,2026},"VU HAN THIEN DUC",0}
+
 };
 
 Book books[MAX];
@@ -1008,17 +1047,17 @@ char input[50];
     int choice;
     do {
         system("cls");
-        printf("           =============== QUAN LY THU VIEN ===============\n");
-        printf("           |1. Them moi sach                              |\n");
-        printf("           |2. Cap nhat thong tin sach                    |\n");
-        printf("           |3. Hien thi danh sach sach                    |\n");
-        printf("           |4. Xoa sach                                   |\n");
-        printf("           |5. Tim kiem sach                              |\n");
-        printf("           |6. Tao phieu muon sach                        |\n");
-        printf("           |7. Tra sach                                   |\n");
-        printf("           |8. Hien thi phieu muon                        |\n");
-        printf("           |9. Thoat                                      |\n");
-        printf("           ================================================\n");
+        printf("=============== QUAN LY THU VIEN ===============\n");
+        printf("|1. Them moi sach                              |\n");
+        printf("|2. Cap nhat thong tin sach                    |\n");
+        printf("|3. Hien thi danh sach sach                    |\n");
+        printf("|4. Xoa sach                                   |\n");
+        printf("|5. Tim kiem sach                              |\n");
+        printf("|6. Tao phieu muon sach                        |\n");
+        printf("|7. Tra sach                                   |\n");
+        printf("|8. Hien thi phieu muon                        |\n");
+        printf("|9. Thoat                                      |\n");
+        printf("================================================\n");
         
         printf("\nNhap lua chon (1-9): ");
 
@@ -1105,4 +1144,3 @@ char input[50];
     } while (1);
 
 }
-
