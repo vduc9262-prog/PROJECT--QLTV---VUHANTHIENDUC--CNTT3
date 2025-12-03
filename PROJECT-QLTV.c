@@ -5,7 +5,7 @@
 #include <ctype.h>
 #define MAX 1000
 #define BOOKS_PER_PAGE 10
-#define MAX_BORROW 200
+#define MAX_BORROW 100
 
 typedef struct {
     int day, month, year;
@@ -19,42 +19,42 @@ typedef struct {
     int quantity;
 } Book;
 Book books[MAX] = {
-    {1,  "Toi thay toi tren duong",                  "Nguyen Nhat Anh",        2018, 10},
+    {1,  "Toi thay toi tren",                        "Nguyen Nhat Anh",        2018, 10},
     {2,  "Dac nhan tam",                             "Dale Carnegie",          1936, 15},
     {3,  "Nha gia kim",                              "Paulo Coelho",           1988, 8},
-    {4,  "One Hundred Years of Solitude",            "Gabriel Garcia Marquez", 1967, 5},
-    {5,  "Cho toi xin mot ve di tuoi tho",           "Nguyen Nhat Anh",        2012, 12},
+    {4,  "One Hundred Yearse",                       "Gabriel Garcia Marquez", 1967, 5},
+    {5,  "Cho toi xin mot ",                         "Nguyen Nhat Anh",        2012, 12},
     {6,  "The Hobbit",                               "J.R.R. Tolkien",         1937, 9},
-    {7,  "Tuoi tre dang gia bao nhieu",              "Rosie Nguyen",           2017, 20},
+    {7,  "Tuoi tre dang gia ",                       "Rosie Nguyen",           2017, 20},
     {8,  "Cafe cung Tony",                           "Tony Buoi Sang",         2015, 18},
     {9,  "Muon kiep nhan sinh",                      "Nguyen Anh Tuan",        2020, 25},
     {10, "Con duong Hoi giao",                       "Nguyen Xuan Vinh",       2019, 7},
     {11, "Mat biec",                                 "Nguyen Nhat Anh",        1990, 15},
     {12, "Doraemon",                                 "Fujiko F. Fujio",        1974, 30},
-    {13, "Harry Potter va Hoi phuong hoang",         "J.K. Rowling",           2003, 10},
+    {13, "Harry Potter va ",                         "J.K. Rowling",           2003, 10},
     {14, "Hacker's Delight",                         "Henry S. Warren",        2002, 6},
     {15, "Clean Code",                               "Robert C. Martin",       2008, 14},
-    {16, "Tuoi tre hoai phi",                        "Rosie Nguyen",           2019, 22},
+    {16, "Tuoi tre hoai phi",                        "Rosie Nguyen",           2019, 22},z
     {17, "Nguoi trong mot",                          "Do Nhat Nam",            2016, 11},
     {18, "Operating System Concepts",                "Silberschatz",           2018, 8},
     {19, "Toi tu hoc",                               "Nguyen Duy Can",         2010, 20},
-    {20, "Con meo day bien troi va khoa hoc",        "Stephane Garnier",       2019, 9},
+    {20, "Con meo day bien c",                       "Stephane Garnier",       2019, 9},
     {21, "Nghin le mot dem",                         "Nguyen Tuan",            1940, 7},
     {22, "Computer Networks",                        "Andrew Tanenbaum",       2010, 12},
     {23, "Bo gia",                                   "Nguyen Nhat Anh",        2021, 18},
-    {24, "Yeu nhung dieu khong hoan hao",            "Haemin Sunim",           2018, 25},
+    {24, "Yeu nhung dieu ",                          "Haemin Sunim",           2018, 25},
     {25, "Dung chay theo so dong",                   "Damien Webb",            2020, 10},
     {26, "Nghin canh chim bo ca",                    "Harper Lee",             1960, 6},
     {27, "Tam quoc dien nghia",                      "La Quan Trung",          1522, 15},
     {28, "Song nhu ngay mai se chet",                "Robin Sharma",           2018, 13},
     {29, "Atomic Habits",                            "James Clear",            2018, 30},
-    {30, "Dung bao gio di an mot minh",              "Keith Ferrazzi",         2005, 11},
+    {30, "Dung bao gio di an h",                     "Keith Ferrazzi",         2005, 11},
     {31, "The Power of Habit",                       "Charles Duhigg",         2012, 14},
     {32, "Sapphire Blue",                            "Kerstin Gier",           2012, 8},
     {33, "Thay do",                                  "Nguyen Nhat Anh",        2018, 17},
     {34, "Tuoi tho du doi",                          "Nguyen Nhat Anh",        2010, 20},
     {35, "The Little Prince",                        "Antoine de Saint-Exupery", 1943, 25},
-    {36, "Introduction to Algorithms (CLRS)",       "Thomas H. Cormen",       2022, 10}
+    {36, "Introduction  (CLRS)",                     "Thomas H. Cormen",       2022, 10}
 };
 
  Book listBook[MAX]={{1,"To Kill a Mockingbird","Harper Lee",1960,3},
@@ -1015,7 +1015,8 @@ void displayBorrowList() {
         while (1) {
             printf("Chon (1-3): ");
             fflush(stdin);
-            if (fgets(input, sizeof(input), stdin) == NULL) continue;
+            if (fgets(input, sizeof(input), stdin) == NULL) 
+			continue;
             input[strcspn(input, "\n")] = '\0';
 
             if (strlen(input) == 0) {
