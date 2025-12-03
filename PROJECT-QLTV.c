@@ -821,7 +821,8 @@ void createBorrow() {
         fflush(stdin);
         fgets(b.borrowerName, 50, stdin);
         b.borrowerName[strcspn(b.borrowerName, "\n")] = '\0';
-        if (strlen(b.borrowerName) > 0) break;
+        if (strlen(b.borrowerName) > 0) 
+		break;
         printf("LOI! Khong duoc de trong. Nhap lai!\n");
     }
 
@@ -860,7 +861,8 @@ void returnBook() {
             id = id * 10 + (line[k] - '0');
             k++;
         }
-        if (k > 0 && (line[k] == '\n' || line[k] == '\0')) break;
+        if (k > 0 && (line[k] == '\n' || line[k] == '\0')) 
+		break;
         printf("Loi: Phai nhap so! Nhap lai.\n");
     }
 
@@ -887,7 +889,6 @@ void returnBook() {
             continue;
         }
 
-        // T? parse 3 s? t? line (r?t ng?n)
         int nums[3] = {0,0,0}, idx = 0, num = 0;
         int p = 0, valid = 1;
         while (line[p] && idx < 3) {
@@ -1172,3 +1173,5 @@ char input[50];
         getchar();
     } while (1);
 }
+
+ 
