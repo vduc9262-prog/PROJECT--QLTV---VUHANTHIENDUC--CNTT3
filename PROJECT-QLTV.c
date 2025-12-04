@@ -34,7 +34,7 @@ Book books[MAX] = {
     {13, "Harry Potter va ",                         "J.K. Rowling",           2003, 10},
     {14, "Hacker's Delight",                         "Henry S. Warren",        2002, 6},
     {15, "Clean Code",                               "Robert C. Martin",       2008, 14},
-    {16, "Tuoi tre hoai phi",                        "Rosie Nguyen",           2019, 22},z
+    {16, "Tuoi tre hoai phi",                        "Rosie Nguyen",           2019, 22},
     {17, "Nguoi trong mot",                          "Do Nhat Nam",            2016, 11},
     {18, "Operating System Concepts",                "Silberschatz",           2018, 8},
     {19, "Toi tu hoc",                               "Nguyen Duy Can",         2010, 20},
@@ -1176,3 +1176,4 @@ char input[50];
 }
 
  
+
